@@ -1,0 +1,15 @@
+name: build-arm64
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - run: cmake -S . -B build-arm64 -A ARM64
+      - run: cmake --build build-arm64 --config Release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: arm64-build
+          path: build-arm64/**/Release/*.dll
