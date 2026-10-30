@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: off
       - run: cmake -S . -B build-arm64 -A ARM64
       - run: cmake --build build-arm64 --config Release
       - uses: actions/upload-artifact@v4
