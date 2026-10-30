@@ -9,7 +9,7 @@ jobs:
           submodules: false
       - name: Get KoalaBox
         run: git clone --recursive https://github.com/acidicoala/KoalaBox.git KoalaBox
-      - run: cmake -S . -B build-arm64 -A ARM64
+      - run: cmake -S . -B build-arm64 -A ARM64 -DCXX_FILESYSTEM_NO_LINK_NEEDED=ON
       - run: cmake --build build-arm64 --config Release
       - uses: actions/upload-artifact@v4
         with:
