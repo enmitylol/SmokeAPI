@@ -6,7 +6,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: off
+          submodules: false
+      - name: Get KoalaBox
+        run: git clone --recursive https://github.com/acidicoala/KoalaBox.git KoalaBox
       - run: cmake -S . -B build-arm64 -A ARM64
       - run: cmake --build build-arm64 --config Release
       - uses: actions/upload-artifact@v4
